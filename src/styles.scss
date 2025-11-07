@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "primeicons/primeicons.css";
+
+:root{
+  --pina-yellow:#F8D34C;
+  --pina-green:#5BC76E;
+  --pina-blue:#2DC3E2;
+  --pina-purple:#7C57C2;
+  --pina-pink:#E85CBF;
+  --pina-magenta:#B32C8F;
+  --pina-outline:#FFD600;
+  --pina-cyan:#15BCE0;
+  --pina-lime:#84E569;
+  --pina-black:#000000;
+  --pina-white:#FFFFFF;
+}
+
+/* Utilidades extra */
+.shadow-neon       { box-shadow: 0 0 0 2px rgba(179,44,143,.35), 0 0 18px rgba(232,92,191,.6); }
+.shadow-neon:hover { box-shadow: 0 0 0 2px rgba(248,211,76,.45), 0 0 22px rgba(21,188,224,.65); }
+
+.text-neon {
+  text-shadow:
+    0 0 8px rgba(232,92,191,.6),
+    0 0 16px rgba(248,211,76,.35);
+}
+
+/* Borde “glow” */
+.ring-neon { box-shadow: 0 0 0 1px rgba(255,214,0,.35), 0 0 12px rgba(232,92,191,.45) inset; }

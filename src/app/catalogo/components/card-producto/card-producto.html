@@ -1,0 +1,56 @@
+    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden w-72 hover:shadow-md transition-shadow">
+        <!-- Imagen con overlay de título y precio -->
+        <div class="relative">
+            <img src="https://lacamiseta.com.co/cdn/shop/products/camiseta_anime_naruto_kakashi_sasuke_para_ninos_hombre_mujer_colombia_moda_11.jpg?v=1622562916"
+                alt="Playera personalizada" class="w-full h-64 object-cover">
+            <div class="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black/60 to-transparent">
+                <div class="flex items-end justify-between">
+                    <div class="text-slate-100">
+                        <p class="text-sm text-white"></p>
+                        <h3 class="text-base font-semibold leading-tight line-clamp-1">Kakashi Vintage Tee</h3>
+                    </div>
+                    <span class="text-slate-100 text-lg font-semibold">$249</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra compacta de variantes -->
+        <div class="p-3 flex items-center justify-between gap-3">
+            <!-- Colores -->
+            <div class="flex items-center gap-1.5">
+                <span class="w-4 h-4 rounded-full bg-black border border-slate-300" title="Negro"></span>
+                <span class="w-4 h-4 rounded-full bg-white border border-slate-300" title="Blanco"></span>
+                <span class="w-4 h-4 rounded-full bg-slate-700 border border-slate-300" title="Gris"></span>
+                <span class="text-[11px] text-slate-500 ml-1">+2</span>
+            </div>
+
+            <!-- Tallas -->
+            <div class="flex items-center gap-1 text-[11px] text-slate-600">
+                <span class="px-1.5 py-0.5 border border-slate-300 rounded">S</span>
+                <span class="px-1.5 py-0.5 border border-slate-300 rounded">M</span>
+                <span class="px-1.5 py-0.5 border border-slate-300 rounded">L</span>
+                <span class="px-1.5 py-0.5 border border-slate-300 rounded">XL</span>
+            </div>
+
+            <!-- Material -->
+            <span class="text-[11px] px-2 py-0.5 bg-slate-100 text-slate-700 rounded-full" title="Material principal">
+                Algodón
+            </span>
+        </div>
+
+        <!-- Acciones + detalles opcionales -->
+        <div class="px-3 pb-3 flex items-center justify-between">
+            <button  (click)="showDetails()" class="text-sm bg-slate-900 text-white px-3 py-2 rounded-md hover:bg-slate-700 transition-colors no-underline ">
+                Ver detalles
+        </button>
+        </div>
+        <div class="flex align-items-center gap-3 px-3 py-3">
+            <p class="mb-0">Categorias:</p>
+            <div>
+                <span class="text-[11px] px-2 py-0.5 bg-fuchsia-100 text-slate-700 rounded-full"
+                    title="Material principal">
+                    Anime
+                </span>
+            </div>
+        </div>
+    </div>

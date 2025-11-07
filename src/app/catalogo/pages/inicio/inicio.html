@@ -1,0 +1,108 @@
+<div class="contenedor-banner">
+    <div>
+        <app-navbar></app-navbar>
+    </div>
+    <section class="relative min-h-screen bg-slate-50 text-slate-900 flex items-center">
+        <div class="container mx-auto px-6 md:px-10 lg:px-14 w-full">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-10">
+
+                <!-- Columna texto -->
+                <div class="flex-1">
+                    <h1 class="text-5xl md:text-6xl font-semibold leading-tight tracking-tight">
+                        El arte de <br>
+                        <span class="text-slate-700">llevar lo que</span> <br>
+                        sientes
+                    </h1>
+
+                    <p class="mt-5 text-slate-500 max-w-md">
+                        Playeras estampadas personalizadas: expresa tu estilo con diseños únicos y calidad premium.
+                    </p>
+
+                    <!-- Frase nueva -->
+                    <p class="mt-3 text-slate-700 text-lg font-medium">
+                        Tu próxima <span class="text-slate-900 font-semibold">playera favorita</span> te espera.
+                    </p>
+
+                    <div class="mt-8">
+                        <a href="#tienda"
+                            class="inline-flex items-center gap-2 bg-slate-900 text-slate-100 px-6 py-3 rounded-lg hover:bg-slate-700 transition-colors no-underline">
+                            Ver diseños personalizados
+                            <i class="pi pi-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+
+                    <!-- Métricas con flex -->
+                    <div class="mt-10 flex flex-wrap gap-8 max-w-xl">
+                        <div class="flex flex-col">
+                            <div class="text-2xl font-semibold">600+</div>
+                            <div class="text-xs tracking-wide text-slate-500 uppercase">Diseños únicos</div>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="text-2xl font-semibold">500+</div>
+                            <div class="text-xs tracking-wide text-slate-500 uppercase">Diseños personalizados</div>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="text-2xl font-semibold">15+</div>
+                            <div class="text-xs tracking-wide text-slate-500 uppercase">Categorías</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Imagen elíptica central -->
+                <div class="flex-1 relative">
+                    <div class="relative mx-auto w-[85%] aspect-[4/5]">
+                        <!-- elipse con clip-path -->
+                        <img src="https://lacamiseta.com.co/cdn/shop/products/camiseta_anime_naruto_kakashi_sasuke_para_ninos_hombre_mujer_colombia_moda_11.jpg?v=1622562916"
+                            alt="Playera personalizada" class="w-full h-full object-cover shadow-xl"
+                            style="clip-path: ellipse(50% 60% at 50% 50%);">
+                        <!-- óvalo de fondo -->
+                        <div class="absolute inset-0 -z-10" style="clip-path: ellipse(55% 65% at 50% 50%);"
+                            class="bg-slate-200"></div>
+                    </div>
+                </div>
+
+                <!-- Columna lateral derecha -->
+                <aside class="lg:flex hidden flex-col items-center relative flex-1 gap-6">
+                    <div class="absolute -top-6 right-10 text-2xl">✶</div>
+
+                    <div class="text-center text-sm tracking-widest text-slate-600">
+                        <div class="font-semibold">INSPIRADO</div>
+                        <div>EN UN NUEVO</div>
+                        <div class="font-semibold">ESTILO DE VIDA</div>
+                    </div>
+
+                    <div class="w-px h-24 bg-slate-300 relative">
+                        <span class="absolute -bottom-3 -left-1 rotate-90">
+                            <i class="pi pi-arrow-right text-slate-400"></i>
+                        </span>
+                    </div>
+
+                    <div class="p-2 rounded-2xl bg-slate-200">
+                        <img src="https://m.media-amazon.com/images/I/61y2F2ZZkQL._AC_SX569_.jpg" alt="Detalle"
+                            class="w-28 h-36 object-cover rounded-xl">
+                    </div>
+                </aside>
+
+            </div>
+        </div>
+
+        <!-- ornamento curvo superior derecho -->
+        <svg class="hidden md:block absolute -top-6 right-0 w-40 h-40 text-slate-200" viewBox="0 0 200 200" fill="none">
+            <path d="M0,180 C120,120 120,40 200,0" stroke="currentColor" stroke-width="2" />
+        </svg>
+    </section>
+
+
+</div>
+
+<!-- cards de los productos -->
+<div class="flex justify-around pb-5 mt-5">
+<app-card-producto (OnEmitShowDetails)="onShowDetails($event)"></app-card-producto>
+<app-card-producto (OnEmitShowDetails)="onShowDetails($event)"></app-card-producto>
+<app-card-producto (OnEmitShowDetails)="onShowDetails($event)"></app-card-producto>
+<app-card-producto (OnEmitShowDetails)="onShowDetails($event)"></app-card-producto>
+<app-card-producto (OnEmitShowDetails)="onShowDetails($event)"></app-card-producto>
+</div>
+
+
+<app-detalle-producto [visibleDetalle]="showDetails" (onEmitclose)="onShowDetails($event)"></app-detalle-producto>
