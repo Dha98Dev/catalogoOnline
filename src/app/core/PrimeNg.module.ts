@@ -40,6 +40,7 @@ import { StepperModule } from 'primeng/stepper';
 import { RadioButton } from 'primeng/radiobutton';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Menu } from 'primeng/menu';
+import { SelectButton } from 'primeng/selectbutton';
 
 @NgModule({
     imports: [
@@ -80,6 +81,7 @@ import { Menu } from 'primeng/menu';
         StepperModule,
         RadioButton,
         Menu,
+        SelectButton,
         
         
     ],
@@ -107,7 +109,7 @@ import { Menu } from 'primeng/menu';
         Ripple,
         ScrollTop,
         SelectModule,
-        SpeedDial,
+        SpeedDial,   
         TableModule,
         TagModule,
         Toast,
@@ -119,6 +121,7 @@ import { Menu } from 'primeng/menu';
         StepperModule,
         RadioButton,
         Menu,
+        SelectButton,
         
         
     ],

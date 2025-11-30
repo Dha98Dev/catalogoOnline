@@ -1,0 +1,34 @@
+<div class="mx-5 font-medium flex justify-between">
+    <p class="mb-0 text-xl"> {{items.categoria}} </p>
+    <p-button pTooltip="Ver mas diseños de anime" icon="pi pi-plus" size="small" severity="contrast" tooltipPosition="top"/>
+</div>
+<section class="w-full flex justify-center overflow-x-hidden">
+  <div class="relative w-full max-w-[1950px] py-4">
+    <!-- Flecha izquierda -->
+    <button type="button" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2
+             w-10 h-10 rounded-full bg-black/60 text-white
+             items-center justify-center z-10 hover:bg-black/80 transition" (click)="scrollLeft()">
+      <i class="pi pi-arrow-circle-left"></i>
+    </button>
+
+    <!-- Viewport (scrollable) -->
+    <div #viewport class="overflow-x-auto overflow-y-hidden hide-scrollbar px-8">
+      <!-- Track -->
+      <div class="flex gap-[100px]">
+        @for (item of items.disenios; track $index) {
+        <div  class="shrink-0 basis-1/5 min-w-[200px] max-w-[300px]
+                 transition-transform duration-200 hover:scale-105">
+          <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: item }"></ng-container>
+        </div>
+        }
+      </div>
+    </div>
+
+    <!-- Flecha derecha -->
+    <button type="button" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2
+             w-10 h-10 rounded-full bg-black/60 text-white
+             items-center justify-center z-10 hover:bg-black/80 transition" (click)="scrollRight()">
+      <i class="pi pi-arrow-circle-right"></i>
+    </button>
+  </div>
+</section>

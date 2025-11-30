@@ -1,0 +1,12 @@
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE y Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari y derivados */
+}
+::ng-deep .p-tooltip .p-tooltip-text {
+  font-size: 12px !important;   /* tamaño del texto */
+  padding: 6px 12px !important; /* opcional */
+}

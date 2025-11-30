@@ -1,0 +1,47 @@
+<div class="border  rounded-2xl shadow-md inset-0">
+    <div class=" w-fit">
+        <div class="preview relative  ">
+            <!-- Imagen de la playera -->
+            @if (data.coloresDisponibles.nombreColores[0] === 'Negro') {
+            <img [src]="'./assets/images/p-black.jpeg'" alt="" class="playera w-[350px]   ">
+            }@else{
+            <img [src]="'./assets/images/p-white.jpeg'" alt="" class="playera w-[350px]   ">
+            }
+            <!-- Contenedor centrado del diseño -->
+            <div class="absolute inset-0 flex justify-center items-center mb-5 ">
+                <div class="relative !w-[100px] h-full flex justify-center items-center">
+                    <!-- <div class="absolute h-full w-full bg-slate-50" [ngStyle]="{ top: selectedPosition.top, right: selectedPosition.rigth}"> -->
+                    <img [src]="urlBack + data.path" alt="diseño" class="no-save  absolute "
+                        (contextmenu)="block($event)" (dragstart)="block($event)" (mousedown)="blockMiddle($event)" />
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+        <p class="title font-medium text-lg p-3">
+            {{ data.nombreDisenio }}
+        </p>
+
+        <!-- Barra compacta de variantes -->
+        <div class="p-3 flex items-center justify-between gap-3 text-[11px] text-slate-600">
+            <!-- Colores -->
+            <div class="flex items-center gap-1.5">
+                <span class="font-medium">Colores:</span>
+                @for (item of data.coloresDisponibles.hex_colores; let i = $index; track $index) {
+                <ng-container>
+                    <span class="w-4 h-4 rounded-full border border-slate-300" [style.background]="item"
+                        [title]="data.coloresDisponibles.nombreColores[i]"></span>
+                </ng-container>
+                }
+            </div>
+
+
+            <!-- Tallas -->
+            <div class="flex items-center gap-1 text-[11px] text-slate-600">
+                <span class="px-1.5 py-0.5 border border-slate-300 rounded">S</span>
+                <span class="px-1.5 py-0.5 border border-slate-300 rounded">M</span>
+                <span class="px-1.5 py-0.5 border border-slate-300 rounded">L</span>
+                <span class="px-1.5 py-0.5 border border-slate-300 rounded">XL</span>
+            </div>
+        </div>
+    </div>
+</div>

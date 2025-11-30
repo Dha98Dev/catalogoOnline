@@ -1,0 +1,233 @@
+<div class="flex justify-around">
+  <div>
+    <button (click)="resetDisenioForm()">limpiar form</button>
+    <pre>
+      {{disenioForm.value | json}}
+    </pre>
+  </div>
+  <div>
+    @if (!loader && colorOptions.length> 0) {
+    <!-- <h1 class="text-3xl font-bold text-center mt-6 mb-8 text-gray-800">Agregar nuevo diseño</h1> -->
+
+    <div class="mx-3 mt-4 flex justify-end mb-6">
+      <p-button icon="pi pi-plus" size="small" label="Nueva categoría" severity="contrast"
+        (onClick)="visibleNewCategory=true" />
+    </div>
+
+    <form [formGroup]="disenioForm" (ngSubmit)="onSubmit()"
+      class="max-w-4xl mx-auto p-6 bg-white rounded-xl shadow-md space-y-8">
+      <div class="flex gap-3">
+        <!-- Nombre del diseño -->
+        <div class="space-y-2 flex-1">
+          <label class="block text-sm font-semibold text-gray-700">
+            Nombre del diseño
+          </label>
+          <input type="text" formControlName="nombre_disenio" class="w-full border border-gray-300 rounded-lg px-4 py-2"
+            placeholder="Ej. GYM Beast" />
+        </div>
+
+        <!-- Código del diseño -->
+        <div class="space-y-2 flex-1">
+          <label class="block text-sm font-semibold text-gray-700">
+            Código del diseño (SKU)
+          </label>
+          <input type="text" formControlName="codigo_disenio" class="w-full border border-gray-300 rounded-lg px-4 py-2"
+            placeholder="Ej. GYM-001" />
+        </div>
+      </div>
+
+      <!-- Imagen principal -->
+
+
+      <div class="mt-5 flex flex-col gap-3">
+        @if (safeUrlDisenio=='') {
+        <p-fileupload mode="basic" name="demo[]" chooseIcon="pi pi-upload" (onSelect)="onArchivoPrincipalChange($event);sendFile()"
+          accept="image/*"  [auto]="false" chooseLabel="Seleccione el diseño" />
+        <!-- maxFileSize="1000000" -->
+        }
+        @else {
+        <p-image [src]="safeUrlDisenio" alt="Image" width="250" [preview]="true" />
+        <div class="w-fit">
+          <p-button icon="pi pi-trash" severity="danger" pTooltip="Quitar diseño" tooltipPosition="bottom"
+            (onClick)="this.safeUrlDisenio=''" />
+        </div>
+        }
+      </div>
+
+      <!-- <div class="space-y-2">
+        <label class="block text-sm font-semibold text-gray-700">
+          Imagen principal
+        </label>
+        <div class="flex items-center justify-center w-full">
+          <label
+            class="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+              <i class="pi pi-cloud-upload text-2xl text-gray-400 mb-2"></i>
+              <p class="mb-1 text-sm text-gray-500">Haz clic para subir la imagen</p>
+            </div>
+            <input type="file" (change)="onArchivoPrincipalChange($event)" accept="image/*" class="hidden" />
+          </label>
+        </div>
+        <p class="text-xs text-gray-500 mt-1">
+          Esta será la miniatura principal del diseño.
+        </p>
+      </div> -->
+
+      <!-- Imágenes adicionales -->
+      <!-- <div class="space-y-2">
+    <label class="block text-sm font-semibold text-gray-700">
+      Imágenes adicionales (opcional)
+    </label>
+    <div class="flex items-center justify-center w-full">
+      <label class="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+          <i class="pi pi-images text-2xl text-gray-400 mb-2"></i>
+          <p class="mb-1 text-sm text-gray-500">Haz clic para subir imágenes adicionales</p>
+        </div>
+        <input 
+          type="file" 
+          multiple 
+          (change)="onImagenesExtraChange($event)" 
+          accept="image/*" 
+          class="hidden" 
+        />
+      </label>
+    </div>
+    <p class="text-xs text-gray-500 mt-1">
+      Puedes subir 1 o más imágenes por diseño (mockups, detalles, etc.).
+    </p>
+  </div> -->
+
+      <!-- Categorías -->
+      <div class="space-y-3">
+        <label class="block text-sm font-semibold text-gray-700">
+          Categorías
+        </label>
+
+        @if (categoriasOptions.length > 0) {
+        <div class="flex justify-center">
+          <p-select [options]="categoriasOptions" optionLabel="label" optionValue="id"
+            placeholder="Seleccione una categoria" class="w-full " filter="true" filterBy="label"
+            formControlName="categorias" (onChange)="sendFile()" />
+        </div>
+
+        } @else {
+        <div class="text-center py-4 text-gray-500 bg-gray-50 rounded-lg">
+          No hay categorías disponibles
+        </div>
+        }
+
+        <p class="text-xs text-gray-500">
+          Selecciona una o varias categorías para este diseño.
+        </p>
+      </div>
+
+      <!-- Colores permitidos -->
+      <div class="space-y-3">
+        <label class="block text-sm font-semibold text-gray-700">
+          Colores permitidos para este diseño
+        </label>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 p-4 bg-gray-50 rounded-lg">
+          @for (c of colorOptions; track c.id || $index) {
+          <label [for]="'col-' + (c.id || $index)"
+            class="flex items-center gap-3 p-2 rounded-md hover:bg-white transition-colors duration-150">
+
+            <input [id]="'col-' + (c.id || $index)" type="checkbox" [checked]="isColorSelected(c.id)"
+              (change)="toggleColor(c.id, $event)" class="h-5 w-5 text-indigo-600 rounded focus:ring-indigo-500" />
+
+            <span class="text-sm font-medium text-gray-700">{{ c.label }}</span>
+          </label>
+          }
+
+        </div>
+      </div>
+
+      <!-- Tipos de producto -->
+      <div class="space-y-3">
+        <label class="block text-sm font-semibold text-gray-700">
+          Tipos de prenda / producto donde aplica
+        </label>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 p-4 bg-gray-50 rounded-lg">
+          @for (g of garmentOptions; track g.id || $index) {
+          <label [for]="'g-' + (g.id || $index)"
+            class="flex items-center gap-3 p-2 rounded-md hover:bg-white transition-colors duration-150">
+
+            <input [id]="'g-' + (g.id || $index)" type="checkbox"
+              [checked]="disenioForm.get('tipos_productos')?.value?.includes(g.id)"
+              (change)="toggleGarment(g.id, $event)" class="h-5 w-5 text-indigo-600 rounded focus:ring-indigo-500" />
+
+            <span class="text-sm font-medium text-gray-700">{{ g.label }}</span>
+          </label>
+          }
+
+        </div>
+      </div>
+
+      <!-- Palabras clave -->
+      <div class="space-y-2">
+        <label class="block text-sm font-semibold text-gray-700">
+          Palabras clave (para buscador)
+        </label>
+        <input type="text" formControlName="palabras_clave" class="w-full border border-gray-300 rounded-lg px-4 py-2"
+          placeholder="Ej. gym, fuerza, motivación" />
+        <p class="text-xs text-gray-500">
+          Separa las palabras clave con comas.
+        </p>
+      </div>
+
+      <!-- Medidas disponibles -->
+      <div class="space-y-3">
+        <label class="block text-sm font-semibold ">
+          Medidas disponibles para este diseño
+        </label>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 p-4 rounded-lg">
+          @for (m of medidasOptions; track m.id || $index) {
+          <div class="flex items-center gap-3">
+            <img class="w-[50px]" [src]="'./assets/images/medidas/' + m.url_posicion" alt="">
+            <div class="checkb">
+              <label class="flex items-center gap-3 p-2 rounded-md hover:bg-white transition-colors duration-150">
+                <input type="checkbox" [checked]="disenioForm.get('medidas')?.value?.includes(m.id)"
+                  (change)="toggleMedida(m.id, $event)" class="h-5 w-5 text-indigo-600 rounded focus:ring-indigo-500" />
+                <span class="text-sm font-medium text-gray-700">
+                  {{ m.medida }} - {{ m.posicion_text }} - {{ m.lado_seleccionado }}
+                </span>
+              </label>
+            </div>
+          </div>
+          }
+
+        </div>
+      </div>
+
+      <!-- Botón Guardar -->
+      <div class="pt-6 flex justify-center">
+        <p-button icon="pi pi-save" label="Guardar diseño" severity="contrast" (onClick)="saveDesign()"/>
+      </div>
+    </form>
+
+    <!-- formulario de una nueva categoria -->
+    <div class="card flex justify-center">
+      <p-dialog header="Agregar nueva categoria" [modal]="true" [(visible)]="visibleNewCategory"
+        [style]="{ width: '25rem' }" (onHide)="newCategoria.value=''">
+        <span class="p-text-secondary block mb-8"></span>
+        <div class="flex flex-col items-center gap-2 mb-4 w-full">
+          <label for="username" class="font-semibold w-full">Nombre de la nueva categoria</label>
+          <input pInputText id="username" #newCategoria class="flex-auto w-full" autocomplete="off" />
+        </div>
+        <div class="flex justify-end gap-2">
+          <p-button label="Cancelar" severity="secondary" (click)="visibleNewCategory = false" />
+          <p-button label="Guardar" icon="pi pi-save" severity="contrast"
+            (click)="visibleNewCategory = false; saveNewCategoria(newCategoria.value)" />
+        </div>
+      </p-dialog>
+    </div>
+
+
+
+    <!-- toast para las alertas -->
+    <p-toast />
+    }@else {
+    <h1></h1>
+    }
+  </div>
+</div>

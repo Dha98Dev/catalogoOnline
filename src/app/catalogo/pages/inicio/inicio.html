@@ -96,13 +96,34 @@
 </div>
 
 <!-- cards de los productos -->
-<div class="flex justify-around pb-5 mt-5">
+<!-- <div class="flex justify-around pb-5 mt-5">
 <app-card-producto (OnEmitShowDetails)="onShowDetails($event)"></app-card-producto>
 <app-card-producto (OnEmitShowDetails)="onShowDetails($event)"></app-card-producto>
 <app-card-producto (OnEmitShowDetails)="onShowDetails($event)"></app-card-producto>
 <app-card-producto (OnEmitShowDetails)="onShowDetails($event)"></app-card-producto>
-<app-card-producto (OnEmitShowDetails)="onShowDetails($event)"></app-card-producto>
+</div> -->
+<!-- <app-detalle-producto [visibleDetalle]="showDetails" (onEmitclose)="onShowDetails($event)"></app-detalle-producto> -->
+
+
+<!-- <app-item-carrusel></app-item-carrusel>
+<app-card-producto (OnEmitShowDetails)="onShowDetails($event)"></app-card-producto> -->
+
+<div class="title my-5">
+    <h2 class="text-center text-2xl "> Agregados recientemente</h2>
+<div class="flex gap-4 items-center  justify-center">
+    <div class="border-1 border-gray-200  h-[2px] w-[20%]"></div>
+    <i class="pi pi-star"></i>
+    <div class="border-1 border-gray-200  h-[2px] w-[20%]"></div>
+</div>
 </div>
 
-
-<app-detalle-producto [visibleDetalle]="showDetails" (onEmitclose)="onShowDetails($event)"></app-detalle-producto>
+@for (cat of listaDisenios; track cat.idCategoria) {
+  <div class="mt-[150px] px-3">
+    <app-main-carrousel [items]="cat">
+      <ng-template let-dis>
+        <!-- dis es un DisenioReciente -->
+        <app-item-carrusel [data]="dis"></app-item-carrusel>
+      </ng-template>
+    </app-main-carrousel>
+  </div>
+}

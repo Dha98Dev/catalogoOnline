@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-detalle-producto',
@@ -7,6 +8,5 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './detalle-producto.scss',
 })
 export class DetalleProducto {
-@Input()  visibleDetalle:boolean=false
-@Output() onEmitclose:EventEmitter<any>=new EventEmitter
+ 
 }
