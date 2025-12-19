@@ -1,4 +1,4 @@
-<div class="border  rounded-2xl shadow-md inset-0">
+<button class="border  rounded-2xl shadow-md inset-0 transition-transform duration-200 hover:scale-105" (click)="emitIdSelected()">
     <div class=" w-fit">
         <div class="preview relative  ">
             <!-- Imagen de la playera -->
@@ -17,9 +17,15 @@
                 </div>
             </div>
         </div>
-        <p class="title font-medium text-lg p-3">
+        <p class="title font-medium text-lg px-3 mb-0">
             {{ data.nombreDisenio }}
         </p>
+        <div class="px-3  text-sm">
+            <small class="font-medium text-gray-500">Codigo de diseño: </small>
+            <span class="text-sm">
+                {{data.codigoDisenio}}
+            </span>
+        </div>
 
         <!-- Barra compacta de variantes -->
         <div class="p-3 flex items-center justify-between gap-3 text-[11px] text-slate-600">
@@ -44,4 +50,4 @@
             </div>
         </div>
     </div>
-</div>
+</button>

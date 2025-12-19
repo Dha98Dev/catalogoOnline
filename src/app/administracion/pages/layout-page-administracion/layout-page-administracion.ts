@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../../auth/services/Auth.service';
 
 @Component({
   selector: 'app-layout-page-administracion',
@@ -7,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './layout-page-administracion.scss',
 })
 export class LayoutPageAdministracion {
+public visible:boolean=false
 
+constructor(private authService:AuthService){}
+
+cerrarSesion(){
+  this.authService.logout()
+}
 }

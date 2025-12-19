@@ -1,205 +1,183 @@
 @if (!loader && colorOptions.length > 0) {
-  <!-- <p-drawer header="Kakashi Vintage Tee" [(visible)]="visibleDetalle" position="right" (onHide)="onEmitclose.emit(false)"
-    styleClass="w-100"> -->
-<!-- contenedor total -->
-<!-- <div class="contenedor flex justify-center"> -->
-<!-- contenedor centrado -->
-<!-- <div class="col-8 ">
-            <div class="flex items-center gap-1.5">
-                <span class="w-4 h-4 rounded-full bg-black border border-slate-300" title="Negro"></span>
-                <span class="w-4 h-4 rounded-full bg-white border border-slate-300" title="Blanco"></span>
-                <span class="w-4 h-4 rounded-full bg-slate-700 border border-slate-300" title="Gris"></span>
-            </div>
-        </div>
-    </div>
 
- -->
+<div class="drawer flex flex-col gap-4">
 
-
-<!-- <div class="flex flex-row-reverse gap-3">
-        <div class="w-[10%]  flex flex-col gap-3 overflow-y-auto max-h-full">
-            <div class="shrink-0 flex justify-around shadow-md overflow-hidden rounded">
-                <img src="https://lacamiseta.com.co/cdn/shop/products/camiseta_anime_naruto_kakashi_sasuke_para_ninos_hombre_mujer_colombia_moda_11.jpg?v=1622562916"
-                    class="w-[95%]">
-            </div>
-            <div class="shrink-0 flex justify-around shadow-md overflow-hidden rounded">
-                <img src="https://lacamiseta.com.co/cdn/shop/products/camiseta_anime_naruto_kakashi_sasuke_para_ninos_hombre_mujer_colombia_moda_11.jpg?v=1622562916"
-                    class="w-[95%]">
-            </div>
-            <div class="shrink-0 flex justify-around shadow-md overflow-hidden rounded">
-                <img src="https://lacamiseta.com.co/cdn/shop/products/camiseta_anime_naruto_kakashi_sasuke_para_ninos_hombre_mujer_colombia_moda_11.jpg?v=1622562916"
-                    class="w-[95%]">
-            </div>
-            <div class="shrink-0 flex justify-around shadow-md overflow-hidden rounded">
-                <img src="https://lacamiseta.com.co/cdn/shop/products/camiseta_anime_naruto_kakashi_sasuke_para_ninos_hombre_mujer_colombia_moda_11.jpg?v=1622562916"
-                    class="w-[95%]">
-            </div>
-            <div class="shrink-0 flex justify-around shadow-md overflow-hidden rounded">
-                <img src="https://lacamiseta.com.co/cdn/shop/products/camiseta_anime_naruto_kakashi_sasuke_para_ninos_hombre_mujer_colombia_moda_11.jpg?v=1622562916"
-                    class="w-[95%]">
-            </div>
-            <div class="shrink-0 flex justify-around shadow-md overflow-hidden rounded">
-                <img src="https://lacamiseta.com.co/cdn/shop/products/camiseta_anime_naruto_kakashi_sasuke_para_ninos_hombre_mujer_colombia_moda_11.jpg?v=1622562916"
-                    class="w-[95%]">
-            </div>
-
-        </div>
-        <div class="w-[80%]  flex justify-center overflow-hidden rounded">
-            <img src="https://lacamiseta.com.co/cdn/shop/products/camiseta_anime_naruto_kakashi_sasuke_para_ninos_hombre_mujer_colombia_moda_11.jpg?v=1622562916"
-                class="h-[25%]">
-        </div>
-
-    </div>
-    <div class="flex items-center gap-2 text-xl w-fit">
-        <p class="font-medium mb-0">Codigo diseño:</p>
-        <small>D56</small>
-    </div> -->
-
-<!-- div de los detalles -->
-<!-- <div class="py-2 px-2 mt-5 ">
-        <div class="tipo_telas"></div>
-        <div class="colores"></div>
-        <div class="tallas"></div>
-
-    </div>
-
-</p-drawer> -->
-
-
-
-  <div class="drawer flex flex-col gap-4">
-
-    <!-- 1 + 3: Colores y Tipo de prenda -->
-    <div class="flex items-start gap-4 flex-wrap justify-between shadow-md py-3 rounded-xl">
-      <!-- 1) Colores (checkbox redondeados) -->
-      <div class="flex-1  text-center">
-        <div class="section-title">Colores</div>
-        <p-selectButton [options]="colorOptions" [(ngModel)]="selectedColor" optionLabel="label" optionValue="value"
-          [multiple]="false" [unselectable]="true" [allowEmpty]="true" (onChange)="getMedidas()">
-          <ng-template pTemplate="item" let-opt>
-            <div class="swatch" [style.background]="opt.meta.hex" [attr.aria-label]="opt.label"></div>
-            <span class="swatch-label">{{opt.label}}</span>
-          </ng-template>
-        </p-selectButton>
-      </div>
-
-      <!-- orientacion -->
-      <div class="flex-1  text-center">
-        <div class="section-title">Lado de prenda</div>
-        <p-selectButton [options]="orientacionOptions" [(ngModel)]="selectedOrientacion" optionLabel="label"
-          optionValue="value" (onChange)="getMedidas()"></p-selectButton>
-      </div>
-
-      <!-- 3) Tipo de prenda (radio/single) -->
-      <div class="flex-1  text-center">
-        <div class="section-title">Tipo de prenda</div>
-        <p-selectButton [options]="garmentOptions" [(ngModel)]="selectedPrenda" optionLabel="label"
-          optionValue="value" (onChange)="getMedidas()"></p-selectButton>
+  <!-- 1 + 3: Colores y Tipo de prenda -->
+  <div class="flex items-start gap-1 flex-wrap justify-between shadow-md py-3 rounded-xl personalizacion">
+    <!-- 1) Colores (checkbox redondeados) -->
+    <div class="flex-1 px-3">
+      <div class="section-title">Colores</div>
+      <!-- <p-selectButton [options]="colorOptionsFiltered" [(ngModel)]="selectedColor" optionLabel="label" optionValue="value"
+        [multiple]="false" [unselectable]="true" [allowEmpty]="true" (onChange)="generateDataMessage();getMedidas()">
+        <ng-template pTemplate="item" let-opt>
+          <div class="swatch" [style.background]="opt.meta.hex" [attr.aria-label]="opt.label"></div>
+          <span class="swatch-label">{{opt.label}}</span>
+        </ng-template>
+      </p-selectButton> -->
+      <div class=" flex gap-2">
+        @for (color of colorOptionsFiltered; track $index) {
+        <p-button [label]="color.label" [outlined]="true" size="small"
+          [severity]=" selectedColor == color.value ? 'success' : 'secondary'" (onClick)="selectedColor=color.value"
+          [icon]=" selectedColor == color.value ? 'pi pi-check' : ''" (onClick)="generateDataMessage();getMedidas()">
+          <span class="h-4 w-4 shadow-md rounded-full" [ngStyle]="{ background: color.meta.hex }"></span>
+        </p-button>
+        }
       </div>
     </div>
 
-    <pre>
-     top {{getTopAnLeft(true)}}
-     rigth {{getTopAnLeft(false)}}
-     width {{screenWidth}}
-     
-    </pre>
+    <!-- orientacion -->
+    <div class="flex-1 px-3">
+      <div class="section-title">Lado de prenda</div>
+      <!-- <p-selectButton [options]="orientacionOptionsFiltered" [(ngModel)]="selectedOrientacion" optionLabel="label"
+        optionValue="value" (onChange)="generateDataMessage();getMedidas()" ></p-selectButton> -->
 
-
-
-    <!-- 4 + 5: Vista principal + posiciones -->
-    <div class="flex gap-4 images">
-      <!-- 4) Imagen base con overlay del diseño -->
-      <div class=" flex-1">
-        <!-- t-0 l-0 -->
-
-        <!-- <div class="preview relative border-1 border-red-500">
-          <div class="absolute  flex justify-center border left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[524px] h-full" >
-            <div class="relative  w-full h-full" >
-              <div class="absolute bg-red-500 " [ngStyle]="{ top:selectedPosition.top, left:'', right:selectedPosition.rigth }"> 
-                <img [src]="urlDisenio" alt="diseño" class="no-save" (contextmenu)="block($event)"
-                  (dragstart)="block($event)" (mousedown)="blockMiddle($event)" [attr.draggable]="false" [ngStyle]="{ width: selectedPosition.tamanio_img }" />
-              </div>
-            </div>
-          </div>
-          <img [src]="getColorPlayera()" alt="" class="border" >
-        </div> -->
-
-        <div class="preview relative ">
-          <!-- Imagen de la playera -->
-          <img [src]="getColorPlayera()" alt="" class="playera">
-
-          <!-- Contenedor centrado del diseño -->
-          <div class="absolute inset-0 flex justify-center items-center">
-            <div class="relative w-[524px] h-full flex justify-center items-center">
-              <!-- <div class="absolute h-full w-full bg-slate-50" [ngStyle]="{ top: selectedPosition.top, right: selectedPosition.rigth}"> -->
-              <img [src]="urlDisenio" alt="diseño" class="no-save  absolute" (contextmenu)="block($event)"
-                (dragstart)="block($event)" (mousedown)="blockMiddle($event)" [attr.draggable]="false" [ngStyle]="{
-          width: selectedPosition.tamanio_img,top: getTopAnLeft(true), right:getTopAnLeft(false) 
-        }" />
-              <!-- </div> -->
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- 5) Posiciones posibles (cards) -->
-      <div class="w-[220px] contenedor-cards flex  flex-col gap-3 bg-slate-50 px-2 py-2 rounded">
-        <div class="section-title">Posición del estampado</div>
-        <div class="positions flex flex-col gap-2 ">
-          @for (pos of medidasByside; track $index) {
-          <button class="pos-card" [class.active]="selectedPosition.id===pos.id" (click)="selectedPosition = pos">
-            <img [src]="'./assets/images/medidas/'+pos.url_posicion" [alt]="pos.lado_seleccionado" />
-            <div class="pos-meta">
-              <div class="pos-title">{{ pos.lado_seleccionado }}</div>
-              <div class="pos-desc">{{ pos.medida }}</div>
-            </div>
-          </button>
-          }
-        </div>
+      <div class="flex gap-2">
+        @for (color of orientacionOptionsFiltered; track $index) {
+        <p-button [label]="color.label" [outlined]="true" size="small"
+          [severity]=" selectedOrientacion == color.value ? 'success' : 'secondary'"
+          (onClick)="selectedOrientacion=color.value" [icon]=" selectedOrientacion == color.value ? 'pi pi-check' : ''"
+          (onClick)="getMedidas();generateDataMessage()" />
+        }
       </div>
     </div>
 
-    <!-- 6–9: Info del diseño -->
-    <!-- <div class="flex flex-col gap-2">
+    <!-- 3) Tipo de prenda (radio/single) -->
+    <div class="flex-1 px-3">
+      <div class="section-title">Tipo de prenda</div>
+      <!-- <p-selectButton [options]="garmentOptionsFiltered" [(ngModel)]="selectedPrenda" optionLabel="label"
+        optionValue="value" (onChange)="generateDataMessage();getMedidas()"></p-selectButton> -->
+
+      <div class="flex gap-2">
+        @for (color of garmentOptionsFiltered; track $index) {
+        <p-button [label]="color.label" [outlined]="true" size="small"
+          [severity]=" selectedPrenda == color.value ? 'success' : 'secondary'" (onClick)="selectedPrenda=color.value"
+          [icon]=" selectedPrenda == color.value ? 'pi pi-check' : ''" (onClick)="generateDataMessage();getMedidas()" />
+        }
+      </div>
+
+    </div>
+    <div class="flex-1 px-3">
+      <div class="section-title">Tallas</div>
+      <!-- <p-selectButton [options]="garmentOptionsFiltered" [(ngModel)]="selectedPrenda" optionLabel="label"
+    optionValue="value" (onChange)="generateDataMessage();getMedidas()"></p-selectButton> -->
   
-      <div class="info-row">
-        <div class="info-label">Nombre</div>
-        <div class="info-value">{{ design?.name }}</div>
+      <div class="flex gap-2">
+        @for (talla of tallas; track $index) {
+        <p-button [label]="talla.value" [outlined]="true" size="small"
+          [severity]=" selectedTalla == talla.value ? 'success' : 'secondary'" (onClick)="selectedTalla=talla.value"
+          [icon]=" selectedTalla == talla.value ? 'pi pi-check' : ''" (onClick)="generateDataMessage()" />
+        }
       </div>
+  
+    </div>
+  </div>
+  <!-- <p-button label="generar mensaje" (onClick)="generateMessage()"/>
 
+  <pre>
+    {{tipoImagen}}
+    {{selectedColor}}
+    {{selectedOrientacion}}
+    {{selectedPrenda}}
+    {{selectedPosition.medida }}
+  </pre> -->
 
-      <div class="info-row">
-        <div class="info-label">Categorías</div>
-        <div class="info-value">
-          <span class="tag" *ngFor="let c of design?.categories">{{ c }}</span>
-        </div>
-      </div>
-
-
-      <div class="info-row">
-        <div class="info-label">Tamaño</div>
-        <div class="info-value">
-          {{ design?.sizeCm.width }} × {{ design?.sizeCm.height }} cm
-        </div>
-      </div>
-
-
-      <div class="info-row">
-        <div class="info-label">Más info</div>
-        <div class="info-value">
-          <div class="grid gap-1">
-            <div><b>Código:</b> {{ design?.code }}</div>
-            <div><b>Colores activos:</b> {{ selectedColors?.length || 0 }}</div>
-            <div><b>Tipo:</b> {{ selectedGarment }}</div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
+  <div>
+    <div>
+      <h3 class="text-lg mb-0">Imagenes asociadas al diseño</h3>
+      <small class="text-gray-500">Podras personalizar el tamaño de cada una</small>
+    </div>
+    <div class="imagenes-disenios flex gap-4 mt-4">
+      @for (imgd of listaImagenesDisenio; track $index) {
+      <button class=" shadow-md flex justify-center items-center flex-col border px-2 py-2 rounded-lg relative"
+        (click)="urlDisenio=imgd.path; tipoImagen=imgd.tipo_imagen;asignarValores(); filtrarOpciones()">
+        <img [src]="base+imgd.path" alt="" class="w-[100px]">
+        <small class="font-medium">Imagen {{imgd.tipo_imagen}} </small>
+        @if (imgd.path==urlDisenio) {
+        <i
+          class="pi pi-check absolute top-0 right-0  w-6 h-6  rounded-full bg-emerald-500 text-white text-sm shadow"></i>
+        }
+      </button>
+      }
+    </div>
   </div>
 
+
+
+  <!-- 4 + 5: Vista principal + posiciones -->
+  @if (selectedColor != '' && selectedOrientacion != '' && selectedPrenda ) {
+  <div class="flex gap-4 images">
+    <!-- 4) Imagen base con overlay del diseño -->
+    <div class=" flex-1">
+
+
+      <div class="preview relative ">
+        <!-- Imagen de la playera -->
+        <img [src]="getColorPlayera()" alt="" class="playera">
+
+        <!-- Contenedor centrado del diseño -->
+        <div class="absolute inset-0 flex justify-center items-center">
+          <div class="relative w-[524px] h-full flex justify-center items-center">
+            <!-- <div class="absolute h-full w-full bg-slate-50" [ngStyle]="{ top: selectedPosition.top, right: selectedPosition.rigth}"> -->
+            <img [src]="base+urlDisenio" alt="diseño" class="no-save  absolute" (contextmenu)="block($event)"
+              (dragstart)="block($event)" (mousedown)="blockMiddle($event)" [attr.draggable]="false" [ngStyle]="{
+          width: selectedPosition.tamanio_img,top: getTopAnLeft(true), right:getTopAnLeft(false) 
+        }" />
+            <!-- </div> -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 5) Posiciones posibles (cards) -->
+    <div class="w-[220px] contenedor-cards flex  flex-col gap-3 px-2 py-2 rounded">
+      <div class="section-title">Posición del estampado</div>
+      <div class="positions flex flex-col gap-2 ">
+        @for (pos of medidasByside; track $index) {
+        <button class="pos-card" [class.active]="selectedPosition.id===pos.id" (click)="selectedPosition = pos"
+          (click)="generateDataMessage()">
+          <img [src]="'./assets/images/medidas/'+pos.url_posicion" [alt]="pos.lado_seleccionado" />
+          <div class="pos-meta">
+            <div class="pos-title">{{ pos.lado_seleccionado }}</div>
+            <div class="pos-desc">{{ pos.medida }}</div>
+          </div>
+        </button>
+        }
+      </div>
+    </div>
+  </div>
+  }@else {
+  <div class="flex justify-center">
+    <div class="banner px-3 py-3 shadow-md rounded-xl flex flex-col justify-center items-center gap-3">
+      <i class="pi pi-lightbulb"></i>
+      <p class="mb-0 font-medium text-gray-500">Selecciona un color, un tipo de prenda y un lado de la prenda para
+        iniciar</p>
+    </div>
+  </div>
+  }
+</div>
+<div class="text-gray-500 px-3">
+  <h2 class="text-gray-500 text-2xl ">Codigo de diseño: {{medidas[0].codigo_disenio}} </h2>
+  <p class="mb-0"><b>Nombre diseño: </b> {{medidas[0].nombre_disenio}} </p>
+  <div class="flex gap-3 items-center">
+    <b>Categoria: </b>
+    <p class="mb-0 py-1 px-3 rounded-lg border-2 border-emerald-300  font-medium text-xs">{{medidas[0].categoria}} </p>
+
+  </div>
+</div>
+
 }@else {
-  <h1>loader encendido</h1>
+
 }
+<app-whatsapp-chat [mensaje]="mensajeGenerado"  #whatapp ></app-whatsapp-chat>
+
+<div class="fixed bottom-[30px] right-[30px] z-[999] border rounded-full bg-white">
+  <p-button
+    icon="pi pi-whatsapp"
+    variant="outlined"
+    [rounded]="true"
+    [raised]="true"
+    size="large"
+    (onClick)="generateMessage();whatapp.openWhatsappChat()">
+  </p-button>
+</div>

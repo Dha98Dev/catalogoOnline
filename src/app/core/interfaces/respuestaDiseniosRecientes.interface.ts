@@ -11,6 +11,7 @@ export interface RecienteCategoria {
   idCategoria: number;
   categoria: string;
   disenios: DisenioReciente[];
+  show?: boolean; 
 }
 
 export interface DisenioReciente {
@@ -18,7 +19,10 @@ export interface DisenioReciente {
   nombreDisenio: string;
   codigoDisenio: string;
   path: string;
+  activo?:number,
+  estado?:string
   coloresDisponibles: ColoresDisponibles;
+  show?: boolean; 
 }
 
 export interface ColoresDisponibles {

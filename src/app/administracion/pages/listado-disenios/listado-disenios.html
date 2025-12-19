@@ -1,0 +1,90 @@
+<div class="flex items-center gap-2 mx-3">
+    <small>Mostrar </small>
+    <p-select [options]="perPageOptions" [(ngModel)]="perPage" (onChange)="goToPage(currentPage)" />
+    <small>registros por pagina</small>
+</div>
+<div>
+    <app-dhata-table [columns]="dataTable.columns" [data]="dataTable.data"
+        [globalSearchKeys]="dataTable.globalSearchKeys" (rowClick)="onDisenioSelected($event)"></app-dhata-table>
+</div>
+<!-- Contenedor de paginación -->
+<div class="flex flex-col items-center gap-3 mt-4 mb-[50px]">
+
+    <!-- Texto de resumen -->
+    <div class="text-sm text-gray-600">
+        Página {{ pagination.page }} de {{ pagination.total_pages }} ·
+        Mostrando
+        {{ (pagination.page - 1) * perPage + 1 }}
+        –
+        {{ pagination.page * 100 > pagination.total ? pagination.total : pagination.page * 100 }}
+        de {{ pagination.total }} registros
+    </div>
+
+    <!-- Botones de paginación -->
+    <div class="inline-flex items-center gap-1">
+
+        <!-- Anterior -->
+        <button class="px-3 py-1 border rounded-l-md text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+            (click)="goToPage(pagination.page - 1); currentPage= pagination.page - 1"
+            [disabled]="pagination.page === 1">
+            Anterior
+        </button>
+
+        <!-- Números de página -->
+        <ng-container *ngFor="let p of pages">
+            <button class="px-3 py-1 border text-sm" [ngClass]="{
+          'bg-indigo-600 text-white border-indigo-600': p === pagination.page,
+          'bg-white text-gray-700 hover:bg-gray-100': p !== pagination.page
+        }" (click)="goToPage(p)">
+                {{ p }}
+            </button>
+        </ng-container>
+
+        <!-- Siguiente -->
+        <button class="px-3 py-1 border rounded-r-md text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+            (click)="goToPage(pagination.page + 1); currentPage=pagination.page + 1"
+            [disabled]="pagination.page === pagination.total_pages">
+            Siguiente
+        </button>
+    </div>
+</div>
+
+<p-dialog header="Header" [modal]="true" [(visible)]="visibleMenuActions" [style]="{ width: '50rem' }"
+  [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" [maximizable]="false" >
+  <div class="card">
+    <p-tabs value="1">
+      <p-tablist>
+        <p-tab value="0">Inhabilitar / Habilitar diseño</p-tab>
+        <p-tab value="1">Ver diseño</p-tab>
+      </p-tablist>
+      <p-tabpanels>
+        <p-tabpanel value="0">
+          @if (disenioSelected.estado == 'Activo') {
+          <p-message severity="error">Si inhabilita el diseño ya no esta disponible al publico general hasta que se vuelva a  habilitar nuevamente </p-message>
+          <div class="mt-4">
+            <p-button label="Inhabilitar diseño" severity="danger" (onClick)="desactivarDisenio('inactivo'); visibleMenuActions=false;" />
+          </div>
+          }@else {
+          <p-message severity="info">si habilita el diseño se mostrara nuevamente al publico general cuando realizen una busqueda</p-message>
+          <div class="mt-4">
+            <p-button label="Habilitar diseño"  severity="info" (onClick)="desactivarDisenio('activo'); visibleMenuActions=false;" />
+          </div>
+          }
+
+        </p-tabpanel>
+        <p-tabpanel value="1">
+          <p-message severity="secondary">
+            <small>
+                Desea ver detalles del diseño {{disenioSelected.nombreDisenio}} ?
+            </small>
+        </p-message>
+<div class="mt-3">
+        <p-button severity="contrast" icon="pi pi-eye" size="small" label="Ver detalles del diseño" (onClick)="goToDetails()"/>
+
+</div>
+
+        </p-tabpanel>
+      </p-tabpanels>
+    </p-tabs>
+  </div>
+</p-dialog>

@@ -29,3 +29,15 @@
 
 /* Borde “glow” */
 .ring-neon { box-shadow: 0 0 0 1px rgba(255,214,0,.35), 0 0 12px rgba(232,92,191,.45) inset; }
+
+
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease-out;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

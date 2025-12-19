@@ -11,6 +11,11 @@ import { FormsModule } from '@angular/forms';
 import { DetalleProducto } from './pages/detalle-producto/detalle-producto';
 import { ItemCarrusel } from './components/item-carrusel/item-carrusel';
 import { MainCarrousel } from './components/main-carrousel/main-carrousel';
+import { Busqueda } from './pages/busqueda/busqueda';
+import { ContactoPage } from './pages/contacto-page/contacto-page';
+import { Nav } from './components/nav/nav';
+import { WhatsappChat } from './components/whatsapp-chat/whatsapp-chat';
+import { ScrollRevealDirective } from './diretives/scroll-reveal.directive';
 
 
 @NgModule({
@@ -21,13 +26,18 @@ import { MainCarrousel } from './components/main-carrousel/main-carrousel';
     CardProducto,
     DetalleProducto,
     ItemCarrusel,
-    MainCarrousel
+    MainCarrousel,
+    Busqueda,
+    ContactoPage,
+    Nav,
+    WhatsappChat
   ],
   imports: [
     CommonModule,
     CatalogoRoutingModule,
     PrimeNgModule,
-    FormsModule
+    FormsModule,
+    ScrollRevealDirective
   ]
 })
 export class CatalogoModule { }

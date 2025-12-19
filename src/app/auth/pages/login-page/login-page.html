@@ -1,0 +1,52 @@
+<div class="bg-slate-50">
+    <header class="mx-3">
+    <img src="./assets/images/logo.png" alt="logo"
+        class="w-[120px] opacity-90 hover:opacity-100 transition-opacity duration-300">
+</header>
+<div class="mx-3 mt-3">
+    <p-button severity="secondary" label="Regresar" icon="pi pi-angle-left" (onClick)="redireccionarHome()" />
+</div>
+
+<div class="min-h-[95vh] flex items-center justify-center  flex-col px-5 bg-slate-">
+    <div class="py-2 w-full bg-gradient-to-r from-purple-600 to-emerald-600 max-w-md rounded-lg"></div>
+    <div class="bg-white shadow-sm rounded-xl p-8 w-full max-w-md">
+
+        <h2 class="text-2xl font-bold text-center mb-0 text-gray-700">
+            Iniciar Sesión
+        </h2>
+        <div class="w-full flex justify-center items-center flex-col text-gray-500 mb-6">
+            <small class="text-center ">Bienvenido de nuevo</small>
+            <img src="./assets/images/logo.png" alt="logo"
+        class="w-[80px] opacity-90 hover:opacity-100 transition-opacity duration-300">
+        </div>
+        <form class="mt-5" [formGroup]="loginForm" (ngSubmit)="login()">
+
+            <!-- Email -->
+            <div class="mb-5">
+                <p-floatlabel variant="on">
+                    <input pInputText id="on_label" class="w-full" autocomplete="off" formControlName="username" />
+                    <label for="on_label">Nombre de usuario</label>
+                </p-floatlabel>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-5">
+                <p-floatlabel variant="on">
+                    <input pInputText id="on_label" class="w-full" autocomplete="off" formControlName="password"  type="password
+                     " (keydown.enter)="login()"/>
+                    <label for="on_label">Contraseña</label>
+                </p-floatlabel>
+            </div>
+
+            <!-- Submit -->
+            <div class="flex justify-center">
+                <p-button severity="contrast" label="Iniciar sesión" size="small" (onClick)="login()"/>
+
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+
+    <p-toast />
+    <p-confirmdialog />

@@ -1,0 +1,83 @@
+<div class="fw-container">
+
+  <div
+    class="surface-card border-round-2xl shadow-1 px-4 py-3 flex align-items-center justify-content-between gap-4 fw-navbar-desktop">
+
+    <div class="flex align-items-center gap-4">
+      <div class="flex align-items-center gap-2">
+        <!-- <div class="fw-logo flex align-items-center justify-content-center">
+          <i class="pi pi-wave"></i>
+        </div>
+        <span class="fw-brand">Trimzales</span> -->
+        <a routerLink="/c"><img src="./assets/images/logo.png" alt="logo"
+            class="w-[80px] opacity-90 hover:opacity-100 transition-opacity duration-300"></a>
+
+      </div>
+
+      <div class="flex align-items-center gap-2 text-primary">
+        <button pButton pRipple icon="pi pi-home" class="p-button-text p-button-rounded" routerLink="/c"></button>
+        <button pButton pRipple icon="pi pi-objects-column" class="p-button-text p-button-rounded"
+          routerLink="/c/buscar"></button>
+         <button pButton pRipple icon="pi pi-lock"
+                class="p-button-text p-button-rounded" routerLink="/auth"></button>
+       <!-- <button pButton pRipple icon="pi pi-calendar"
+                class="p-button-text p-button-rounded"></button>
+        <button pButton pRipple icon="pi pi-bolt"
+                class="p-button-text p-button-rounded"></button> -->
+      </div>
+    </div>
+
+    <div class="flex-1">
+      <span class="p-input-icon-left w-full flex gap-2 items-center">
+        <input pInputText type="text" placeholder="Search" class="w-full" #search  (keydown.enter)="searchByKeyword(search.value)"/>
+        <p-button icon="pi pi-search" severity="secondary" (onClick)="searchByKeyword(search.value)"  />
+      </span>
+    </div>
+  </div>
+
+
+  <!-- aqui empieza lo mobil  -->
+
+  <div
+    class="surface-card border-round-2xl shadow-1 px-3 py-3 flex align-items-center justify-content-between fw-navbar-mobile">
+
+    <a routerLink="/c"><img src="./assets/images/logo.png" alt="logo"
+        class="w-[80px] opacity-90 hover:opacity-100 transition-opacity duration-300"></a>
+
+
+    <button pButton pRipple type="button" icon="pi pi-bars" class="p-button-text p-button-rounded"
+      (click)="mobileMenuVisible = true">
+    </button>
+  </div>
+
+  <p-drawer [(visible)]="mobileMenuVisible" position="left" [modal]="true" styleClass="fw-sidebar">
+
+    <div class="flex flex-column h-full">
+
+      <div class="flex align-items-center justify-content-between mb-3">
+        <a routerLink="/c"><img src="./assets/images/logo.png" alt="logo"
+            class="w-[80px] opacity-90 hover:opacity-100 transition-opacity duration-300"></a>
+
+        <button pButton pRipple severity="secondary" icon="pi pi-times" class="p-button-text p-button-rounded"
+          (click)="mobileMenuVisible = false"></button>
+      </div>
+
+      <div class="flex flex-column justify-content-start items-start gap-3 flex-1 overflow-auto">
+
+        <button pRipple class="flex items-center gap-2 !bg-gray-100 px-2 py-2 w-full text-left rounded-lg"
+          routerLinActive="!bg-gray-500 text-white" routerLink="/c/inicio"> <i class="pi pi-home"></i> Inicio</button>
+        <button pRipple  class="flex items-center gap-2 !bg-gray-100 px-2 py-2 w-full text-left rounded-lg"
+          routerLinActive="!bg-gray-500 text-white" routerLink="/c/buscar"> <i class="pi pi-objects-column"></i> Buscar por Categoria</button>
+          <button pRipple   class="flex items-center gap-2 !bg-gray-100 px-2 py-2 w-full text-left rounded-lg"
+          routerLinActive="!bg-gray-500 text-white" routerLink="/auth"> <i class="pi pi-lock"></i> Ingresar</button>
+
+        <div class="mt-3">
+          <span class="p-input-icon-left w-full flex gap-2 items-center">
+            <input pInputText type="text" placeholder="Search" class="w-full" />
+            <p-button icon="pi pi-search" severity="secondary" />
+          </span>
+        </div>
+      </div>
+    </div>
+  </p-drawer>
+</div>

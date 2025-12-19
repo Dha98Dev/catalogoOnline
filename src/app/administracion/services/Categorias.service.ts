@@ -10,5 +10,8 @@ export class CategoriasService {
   addCategoria(categoria:any){
     return this.http.post<any>(this.url+'catalogos/categorias', JSON.stringify(categoria))
   }
+  getCategorias(){
+    return this.http.get<any>(this.url+'catalogos/categorias')
+  }
 
 }

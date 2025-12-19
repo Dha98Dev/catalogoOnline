@@ -1,0 +1,79 @@
+/* Contenedor general */
+.fw-container {
+  padding: 1.5rem 2rem;
+}
+
+/* NAV DESKTOP (visible solo en >= 768px) */
+.fw-navbar-desktop {
+  display: flex;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+  border: 1px solid #edf0f6;
+}
+
+/* NAV MÓVIL (oculto en desktop) */
+.fw-navbar-mobile {
+  display: none;
+}
+
+/* Logo redondo */
+.fw-logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #00c9a7, #005b8f);
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.fw-brand {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* Sidebar ancho */
+.fw-sidebar {
+  width: 22rem !important;
+}
+
+/* Items del menú móvil */
+.fw-menu-item {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.fw-menu-item--active {
+  background: #e8fff3 !important;
+  border-color: #b6f2d2 !important;
+}
+
+/* Usuario en sidebar */
+.fw-user-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.fw-user-mail {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* BREAKPOINTS */
+@media (max-width: 767px) {
+  .fw-navbar-desktop {
+    display: none;
+  }
+
+
+  .fw-navbar-mobile {
+    display: flex;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+    border: 1px solid #edf0f6;
+    
+  }
+   
+}

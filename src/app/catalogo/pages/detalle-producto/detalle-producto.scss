@@ -91,6 +91,13 @@
   }
 }
 
+@media(max-width:620px){
+.personalizacion{
+  flex-direction: column;
+  gap: 20px !important ;
+}
+}
+
 @media(max-width:570px){
 .playera{
     height: 450px;

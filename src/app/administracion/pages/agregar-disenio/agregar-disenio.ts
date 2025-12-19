@@ -321,6 +321,7 @@ export class AgregarDisenio {
     } else {
       this.diseniosService.guardarDisenioData(this.disenioForm.value).subscribe({
         next: (resp) => {
+          console.log(this.disenioForm.value)
           this.messageService.add({
             severity: 'success',
             summary: 'Registro guardado',

@@ -1,6 +1,6 @@
 <div class="mx-5 font-medium flex justify-between">
     <p class="mb-0 text-xl"> {{items.categoria}} </p>
-    <p-button pTooltip="Ver mas diseños de anime" icon="pi pi-plus" size="small" severity="contrast" tooltipPosition="top"/>
+    <p-button pTooltip="Ver mas diseños de anime" icon="pi pi-plus" size="small" severity="contrast" tooltipPosition="top" (onClick)="redirectToSearcByCategory()"/>
 </div>
 <section class="w-full flex justify-center overflow-x-hidden">
   <div class="relative w-full max-w-[1950px] py-4">
@@ -16,8 +16,7 @@
       <!-- Track -->
       <div class="flex gap-[100px]">
         @for (item of items.disenios; track $index) {
-        <div  class="shrink-0 basis-1/5 min-w-[200px] max-w-[300px]
-                 transition-transform duration-200 hover:scale-105">
+        <div  class="shrink-0 basis-1/5 min-w-[200px] max-w-[300px]">
           <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: item }"></ng-container>
         </div>
         }

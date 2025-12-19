@@ -1,1 +1,31 @@
+<nav class="px-3 py-3 bg-gray-100">
+    <p-button label="Menu" icon="pi pi-bars" severity="contrast" size="small" (onClick)="visible=true" />
+</nav>
 <router-outlet></router-outlet>
+
+<p-drawer [(visible)]="visible" header="Drawer">
+    <ul class="flex flex-col gap-2 !m-0 p-0">
+        <li class="flex items-center gap-2 cursor-pointer py-2 bg-slate-100 px-2 rounded-lg" routerLink="/a/add_design"
+            routerLinkActive="bg-slate-700 text-white">
+            <i class="pi pi-plus text-base"></i>
+            <span>Agregar diseño</span>
+        </li>
+        <li class="flex items-center gap-2 cursor-pointer py-2 bg-slate-100 px-2 rounded-lg"
+            routerLink="/a/listado_disenios" routerLinkActive="bg-slate-700 text-white">
+            <i class="pi pi-list text-base"></i>
+            <span>Listado de diseños</span>
+        </li>
+        <li class="flex items-center gap-2 cursor-pointer py-2 bg-slate-100 px-2 rounded-lg"
+            routerLink="/a/details" routerLinkActive="bg-slate-700 text-white">
+            <i class="pi pi-search text-base"></i>
+            <span>Consultar diseño</span>
+        </li>
+        <li class="flex items-center gap-2 cursor-pointer py-2 bg-red-800 px-2 rounded-lg text-white font-medium" (click)="cerrarSesion()">
+            <i class="pi pi-sign-out text-base"></i>
+            <span>Cerrar sesión</span>
+        </li>
+    </ul>
+</p-drawer>
+
+    <p-toast />
+    <p-confirmdialog />

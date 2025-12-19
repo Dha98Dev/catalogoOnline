@@ -1,7 +1,7 @@
 <div class="contenedor-banner">
-    <div>
+    <!-- <div>
         <app-navbar></app-navbar>
-    </div>
+    </div> -->
     <section class="relative min-h-screen bg-slate-50 text-slate-900 flex items-center">
         <div class="container mx-auto px-6 md:px-10 lg:px-14 w-full">
             <div class="flex flex-col lg:flex-row items-center justify-between gap-10">
@@ -118,12 +118,24 @@
 </div>
 
 @for (cat of listaDisenios; track cat.idCategoria) {
-  <div class="mt-[150px] px-3">
+  <div
+    class="mt-[100px] px-3 reveal-hidden"
+    scrollReveal
+    (reveal)="cat.show = true"
+    [class.reveal-visible]="cat.show"
+  >
     <app-main-carrousel [items]="cat">
       <ng-template let-dis>
-        <!-- dis es un DisenioReciente -->
-        <app-item-carrusel [data]="dis"></app-item-carrusel>
+        <app-item-carrusel
+          [data]="dis"
+          (onEmitIdDisenioSelected)="confirmShowDetails($event, $event)"
+        ></app-item-carrusel>
       </ng-template>
     </app-main-carrousel>
   </div>
 }
+
+
+
+
+

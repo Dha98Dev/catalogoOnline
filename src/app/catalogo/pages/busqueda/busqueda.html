@@ -1,0 +1,48 @@
+
+<div class="mx-3 py-3  ">
+    <small class="text-gray-600 font-medium">Nuevo filtro por categoria</small>
+    <div class="flex gap-2 items-center">
+        <p-select class="w-[200px]" [options]="categorias" optionLabel="label" #cat optionValue="label" />
+        <p-button icon="pi pi-search" severity="secondary" (onClick)="newSearchByCategory(cat.value)" />
+    </div>
+</div>
+
+@if (!loader) {
+
+<div>
+    @if (isCategoria) {
+    <h1 class="text-2xl text-center text-gray-600 mt-3">Resultados de la categoria: {{categoria | lowercase}}</h1>
+    }@else{
+    <h1 class="text-2xl text-center text-gray-600 mt-3">Resultados de la busqueda: {{categoria}}</h1>
+    }
+</div>
+
+@if (!isEmpty) {
+
+<div class="flex justify-around flex-wrap mx-3 gap-4 mt-5">
+
+  @for (dis of resultadosBusqueda; track $index) {
+    <div
+      class="max-w-[300px] reveal-hidden"
+      scrollReveal
+      (reveal)="dis.show = true"
+      [class.reveal-visible]="dis.show"
+    >
+      <app-item-carrusel
+        [data]="dis"
+        (onEmitIdDisenioSelected)="confirmShowDetails($event, $event)"
+      ></app-item-carrusel>
+    </div>
+  }
+
+</div>
+
+}@else {
+<div class="flex justify-center">
+    <div class="banner px-3 py-3 shadow-md rounded-xl flex flex-col justify-center items-center gap-3">
+        <i class="pi pi-lightbulb"></i>
+        <p class="mb-0 font-medium text-gray-500">Aún no tenemos diseños para la busqueda realizada</p>
+    </div>
+</div>
+}
+}

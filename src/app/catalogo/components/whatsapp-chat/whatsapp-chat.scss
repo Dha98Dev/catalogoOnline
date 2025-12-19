@@ -1,0 +1,19 @@
+/* whatsapp-chat.component.scss */
+.wa-chat-dialog {
+  .p-dialog {
+    border-radius: 1.25rem;
+    overflow: hidden;
+  }
+
+  .p-dialog-header {
+    padding: 0.75rem 1rem;
+  }
+
+  .p-dialog-content {
+    padding: 0.75rem 1rem;
+  }
+
+  .p-dialog-footer {
+    padding: 0.5rem 0.75rem 0.75rem;
+  }
+}
